@@ -1,5 +1,6 @@
 # Kiểm tra Registry Keys
 
+Nguồn: https://www.cynet.com/evasion-techniques/malware-anti-vm-techniques/
 
 Resistry key là mạng lưới của hệ thống Window, và thông tin về việc sử dụng máy ảo có thể tìm thấy ở đây
 
