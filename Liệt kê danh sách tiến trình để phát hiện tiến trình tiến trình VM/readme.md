@@ -3,7 +3,7 @@ Nguồn: https://www.cynet.com/evasion-techniques/malware-anti-vm-techniques/
 
 Sử dụng command để cho ra thông tin của tiến trình đang chạy, Malware có thể thực hiện các thuật toán với các tiến trình liên quan tới máy ảo từ các string nhận được qua command
 
-Code APi có thể display các tiến trình đang chạy
+Code API có thể display các tiến trình đang chạy
 
 ```C
 void _displayProcess(){
@@ -29,6 +29,8 @@ void _displayProcess(){
 
 }
 ```
+
+![New Bitmap Image](https://user-images.githubusercontent.com/101321172/157825385-24cdeaf7-4138-44af-92aa-b738e1f0ce0a.jpg)
 
 
 Một số các process sau xuất hiện ở trong máy ảo:
