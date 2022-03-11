@@ -18,7 +18,7 @@ void _displayProcess(){
 		if(Process32First(hSnap, &procEntry)){
 			do{
 				#undef UNICODE
-				std::wcout << procEntry.szExeFile << std::endl;
+				std::wcout << procEntry.szExeFile << " ";
 				
 			}
 			while(Process32Next(hSnap, &procEntry));
