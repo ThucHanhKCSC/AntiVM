@@ -48,3 +48,54 @@ Thành
 ![plant text](https://www.cynet.com/wp-content/uploads/2020/11/6.png)
 
 Giải thích: khi chuyển như vậy thì giá trị trả về trong ecx, edx luôn == 0 khi gọi ```CPUID``` với eax = 0x4000000, nên 2 lệnh so sánh trên đều thất bại 
+
+Kết quả
+
+![7](https://user-images.githubusercontent.com/101321172/157817759-e1cdd005-ee2e-47f7-8963-3e15c4b78816.png)
+
+# CPUId với eax = 1
+
+sau khi gọi, CPUID trả về 31 byte chứa thông tin hệ thống. Trên máy vật lý, byte cuối sẽ là 0, còn trên máy ảo sẽ là 1
+
+```C
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    bool Vm = false;
+    __asm{
+        xor eax, eax                //reset eax
+        mov eax, 1                  // eax = 1
+        cpuid
+        bt ecx, 0x1f //Bit test     // test bit cuối trong ecx
+        jc _VM                      // Nếu bit cuối được set (CF = 1) thì jump đến _VM
+        
+        _notVM:
+            jump _nop
+        
+        _VM:
+            mov VM, 1
+        _nop:
+            nop
+    }
+    return 0;
+}
+```
+
+![alt_text](https://www.cynet.com/wp-content/uploads/2020/11/9.png)
+
+![10](https://user-images.githubusercontent.com/101321172/157818867-c4986ede-c7dd-484e-9d10-30043d21ae94.png)
+
+
+Bypass cũng như trên, thay đổi file ![11](https://user-images.githubusercontent.com/101321172/157818925-69106243-677b-47e1-8169-de4d13a68e54.png)
+
+Thành ```cpuid.1.ecx=”0—:—-:—-:—-:—-:—-:—-:—-”```
+
+![alt_text](https://www.cynet.com/wp-content/uploads/2020/11/12.png)
+
+
+![13](https://user-images.githubusercontent.com/101321172/157819022-e3f92fea-4c71-4ac1-990f-f95f9cd9eb09.png)
+
+
+
